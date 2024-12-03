@@ -9,6 +9,9 @@ export default class SeatsController {
             return theSeat;
         } else {
             const data = request.all()
+            if("theater_id" in data){
+                return await Seat.query().where("theater_id", request.input("theater_id"))
+            }
             if ("page" in data && "per_page" in data) {  //Hace una paginacion, toma una seccion del libro
                 const page = request.input('page', 1);
                 const perPage = request.input("per_page", 20);
@@ -16,7 +19,6 @@ export default class SeatsController {
             } else {
                 return await Seat.query()  //Devuelve todos los elementos de la consulta para traer todos.
             }
-
         }
 
     }
