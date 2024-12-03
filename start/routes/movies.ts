@@ -5,4 +5,5 @@ Route.group(() => {
     Route.post("/movies", "MoviesController.create");
     Route.put("/movies/:id", "MoviesController.update");
     Route.delete("/movies/:id", "MoviesController.delete");
-}).middleware(["security"]) //Para llamar al policia. Protegemos las rutas
+    Route.post("notificar", "MoviesController.notificar")
+})//.middleware(["security"]) //Para llamar al policia. Protegemos las rutas
